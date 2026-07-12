@@ -1,0 +1,96 @@
+# Insider Trading Analyzer Configuration
+
+# Supported Companies by Sector
+companies:
+  ai_stocks:
+    - symbol: NVDA
+      name: NVIDIA
+      cik: "0001045810"
+    - symbol: MSFT
+      name: Microsoft
+      cik: "0000789019"
+    - symbol: GOOGL
+      name: Alphabet (Google)
+      cik: "0001652044"
+    - symbol: META
+      name: Meta
+      cik: "0001326801"
+    - symbol: AMZN
+      name: Amazon
+      cik: "0001018724"
+    - symbol: TSLA
+      name: Tesla
+      cik: "0001318605"
+    - symbol: AVGO
+      name: Broadcom
+      cik: "0001377149"
+    - symbol: AMD
+      name: Advanced Micro Devices
+      cik: "0000002488"
+
+  spacetech_stocks:
+    - symbol: SPCE
+      name: Virgin Galactic
+      cik: "0001706146"
+    - symbol: AXIM
+      name: Axiom Space
+      cik: "0002029778"
+    - symbol: RLTY
+      name: Relativity Space
+      cik: "0001982083"
+    - symbol: PL
+      name: Planet Labs
+      cik: "0001779790"
+    - symbol: RKLB
+      name: Rocket Lab
+      cik: "0001811189"
+
+  technology_leaders:
+    - symbol: AAPL
+      name: Apple
+      cik: "0000320193"
+    - symbol: ORCL
+      name: Oracle
+      cik: "0001652860"
+    - symbol: CRM
+      name: Salesforce
+      cik: "0001108772"
+    - symbol: ADBE
+      name: Adobe
+      cik: "0000884896"
+    - symbol: INTC
+      name: Intel
+      cik: "0000050104"
+
+# Claude Analysis Configuration
+claude:
+  model: claude-3-5-sonnet-20241022
+  max_tokens: 2000
+  temperature: 0.7
+  
+# Analysis Prompts
+prompts:
+  individual_transaction: |
+    Analyze this insider trading transaction for potential signals and insights.
+    Evaluate significance, patterns, sentiment, and potential risks.
+  
+  batch_analysis: |
+    Analyze these insider trading transactions for cross-company patterns and sector trends.
+    Identify key signals and potential opportunities or risks.
+  
+  pattern_detection: |
+    Look for patterns in these insider trades. Identify unusual activity, coordinated trading,
+    and what these patterns might indicate about executive confidence or concerns.
+
+# SEC EDGAR Configuration
+sec:
+  base_url: https://data.sec.gov
+  timeout: 30
+  retry_attempts: 3
+
+# Processing Configuration
+processing:
+  days_back: 30
+  batch_size: 5
+  output_format: json
+  output_dir: ./results
